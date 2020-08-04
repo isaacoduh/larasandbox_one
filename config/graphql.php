@@ -101,10 +101,13 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                // 'example_query' => ExampleQuery::class,
+                'record' => App\GraphQL\Queries\RecordQuery::class,
+                'records' => App\GraphQL\Queries\RecordsQuery::class,
             ],
             'mutation' => [
-                // 'example_mutation'  => ExampleMutation::class,
+                'createRecord' => App\GraphQL\Mutations\CreateRecordMutation::class,
+                'updateRecord' => App\GraphQL\Mutations\UpdateRecordMutation::class,
+                'deleteRecord' => App\GraphQL\Mutations\DeleteRecordMutation::class,
             ],
             'middleware' => [],
             'method' => ['get', 'post'],
@@ -121,9 +124,7 @@ return [
     // ]
     //
     'types' => [
-        // 'example'           => ExampleType::class,
-        // 'relation_example'  => ExampleRelationType::class,
-        // \Rebing\GraphQL\Support\UploadType::class,
+        'Record' => App\GraphQL\Types\RecordType::class
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request
