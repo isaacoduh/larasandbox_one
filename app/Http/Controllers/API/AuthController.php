@@ -19,7 +19,7 @@ class AuthController extends Controller
         $user = User::create($validatedData);
         $accessToken = $user->createToken('authToken')->accessToken;
 
-        return response(['user' => $user, 'access_token' => $accessToken]);
+        return response(['user' => $user, 'access_token' => $accessToken, "message" => "Registered Successfully"],201);
     }
 
     public function login(Request $request)
@@ -31,6 +31,8 @@ class AuthController extends Controller
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
-        return response(['user' => auth()->user(), 'access_token' => $accessToken]);
+        return response(['user' => auth()->user(), 'access_token' => $accessToken, 'message' => 'Login Successfully', 200]);
     }
+
+
 }
