@@ -45,7 +45,7 @@ class StartupController extends Controller
 
         $startup = Startup::create($data);
 
-        return response(['startup' => new StartupResource($startup), 'message' => 'Created Successfully'], 200);
+        return response(['startup' => new StartupResource($startup), 'message' => 'Created Successfully'], 201);
     }
 
     /**
@@ -82,6 +82,6 @@ class StartupController extends Controller
     {
         $startup->delete();
 
-        return response(['message' => 'Deleted']);
+        return response(['message' => 'Deleted'],204);
     }
 }
