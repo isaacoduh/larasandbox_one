@@ -48,3 +48,4 @@ Route::group(['prefix' => 'tasks'], function () {
 });
 
 Route::get('chart', 'HighchartController@handleChart');
+
