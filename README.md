@@ -1,6 +1,6 @@
-## CMS with Laravel and Vue
+## Data Management with Laravel and Ajax
 
-A content management application for a website owned by a ficticious product company. The idea is to build out a platform for the client to be able to manage certain parts of their static website.
+A simple laravel CRUD app using AJAX. The central idea is to create a simple app that can create and fetch data from database
 
 ## Key Learnings and Tools
-- PHP, Laravel, ES6 (Javascript), Vue
+- PHP, Laravel, JQuery, Ajax,
