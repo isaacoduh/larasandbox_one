@@ -51,3 +51,5 @@ Route::get('chart', 'HighchartController@handleChart');
 
 Route::get('/upload-file', 'FileUploadController@createForm');
 Route::post('/upload-file', 'FileUploadController@fileUpload')->name('fileUpload');
+Route::get('/image-upload', 'FileUploadController@createMultipleForm');
+Route::post('/image-upload', 'FileUploadController@multipleFileUpload')->name('imageUpload');
