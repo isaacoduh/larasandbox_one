@@ -32,17 +32,17 @@ Route::group(['prefix' => 'tasks'], function () {
         'as' => 'tasks.show'
     ]);
     Route::post('/', [
-        'uses' => 'TasksController@store',
+        'uses' => 'TaskController@store',
         'as'   => 'tasks.store',
     ]);
 
     Route::put('/{id}', [
-        'uses' => 'TasksController@update',
+        'uses' => 'TaskController@update',
         'as'   => 'tasks.update',
     ]);
 
     Route::delete('/{id}', [
-        'uses' => 'TasksController@destroy',
+        'uses' => 'TaskController@destroy',
         'as'   => 'tasks.destroy',
     ]);
 });
