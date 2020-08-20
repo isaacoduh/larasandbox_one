@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', [
+    'uses' => 'TaskController@index',
+    'as' => 'tasks.index'
+]);
+
+Route::group(['prefix' => 'tasks'], function () {
+    Route::get('/{id}', [
+        'uses' => 'TaskController@show',
+        'as' => 'tasks.show'
+    ]);
+    Route::post('/', [
+        'uses' => 'TasksController@store',
+        'as'   => 'tasks.store',
+    ]);
+
+    Route::put('/{id}', [
+        'uses' => 'TasksController@update',
+        'as'   => 'tasks.update',
+    ]);
+
+    Route::delete('/{id}', [
+        'uses' => 'TasksController@destroy',
+        'as'   => 'tasks.destroy',
+    ]);
 });
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('task','TaskController');
