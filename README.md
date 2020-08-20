@@ -4,3 +4,4 @@ A simple laravel CRUD app using AJAX. The central idea is to create a simple app
 
 ## Key Learnings and Tools
 - PHP, Laravel, JQuery, Ajax,
+- Highcharts for Visualization of Data
