@@ -49,3 +49,5 @@ Route::group(['prefix' => 'tasks'], function () {
 
 Route::get('chart', 'HighchartController@handleChart');
 
+Route::get('/upload-file', 'FileUploadController@createForm');
+Route::post('/upload-file', 'FileUploadController@fileUpload')->name('fileUpload');
