@@ -46,3 +46,5 @@ Route::group(['prefix' => 'tasks'], function () {
         'as'   => 'tasks.destroy',
     ]);
 });
+
+Route::get('chart', 'HighchartController@handleChart');
