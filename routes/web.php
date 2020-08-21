@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Route::get('/', 'EmployeesController@index');
+Route::get('/', 'EmployeeController@index');
 Route::get('/employees/getEmployees', 'EmployeeController@getEmployees')->name('employees.getEmployees');
 Route::get('/employees/changeStatus', 'EmployeeController@changeStatus');
+
+Route::resource('ajaxitems', 'ItemController');
