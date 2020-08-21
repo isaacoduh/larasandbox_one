@@ -1,6 +1,9 @@
-## CMS with Laravel and Vue
+## Datatables with Ajax
 
-A content management application for a website owned by a ficticious product company. The idea is to build out a platform for the client to be able to manage certain parts of their static website.
+A simple datatable demo to review some data management concepts
 
 ## Key Learnings and Tools
-- PHP, Laravel, ES6 (Javascript), Vue
+- PHP, Laravel, ES6 (Javascript)
+- Ajax Plain Datatables without Package
+- Simple CRUD Operations without Package
+- Simple switch toggling to change status of certain data elements

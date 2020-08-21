@@ -20,3 +20,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('/', 'EmployeesController@index');
+Route::get('/employees/getEmployees', 'EmployeeController@getEmployees')->name('employees.getEmployees');
+Route::get('/employees/changeStatus', 'EmployeeController@changeStatus');
