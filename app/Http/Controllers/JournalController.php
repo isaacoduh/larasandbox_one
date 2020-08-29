@@ -14,7 +14,8 @@ class JournalController extends Controller
      */
     public function index()
     {
-        //
+        $journals = Journal::all()->toArray();
+        return array_reverse($journals);
     }
 
     /**
@@ -22,32 +23,20 @@ class JournalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add(Request $request)
     {
-        //
+        $journal = new Journal([
+            'title' => $request->input('title'),
+            'description' => $request->input('description'),
+            'author' => $request->input('author')
+        ]);
+        $journal->save();
+
+        return response()->json('The journal was saved successfully');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Journal  $journal
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Journal $journal)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -57,7 +46,7 @@ class JournalController extends Controller
      */
     public function edit(Journal $journal)
     {
-        //
+        return response()->json($journal);
     }
 
     /**
@@ -69,7 +58,9 @@ class JournalController extends Controller
      */
     public function update(Request $request, Journal $journal)
     {
-        //
+        $journal->update($request->all());
+
+        return response()->json('The journal was successfully updated');
     }
 
     /**
@@ -78,8 +69,9 @@ class JournalController extends Controller
      * @param  \App\Journal  $journal
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Journal $journal)
+    public function delete(Journal $journal)
     {
-        //
+        $journal->delete();
+        return response()->json('The journal was successfully deleted');
     }
 }
