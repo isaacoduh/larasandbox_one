@@ -8,10 +8,13 @@
                     <th>Title</th>
                     <th>Description</th>
                     <th>Author</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="journal in Journals" :key="journal.id">
+                <tr v-for="journal in journals" :key="journal.id">
                     <td>{{journal.id}}</td>
                     <td>{{journal.title}}</td>
                     <td>{{journal.description}}</td>
@@ -36,8 +39,9 @@
             return {journals: []}
         },
         created(){
-            this.axios.get('http://localhost:8000/api/journals').then(response => {
-                this.journals = response.journals;
+            this.axios
+            .get('http://localhost:8000/api/journals').then(response => {
+                this.journals = response.data;
             });
         },
         methods: {

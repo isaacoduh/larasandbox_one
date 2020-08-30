@@ -44,8 +44,9 @@ class JournalController extends Controller
      * @param  \App\Journal  $journal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Journal $journal)
+    public function edit($id)
     {
+        $journal = Journal::find($id);
         return response()->json($journal);
     }
 

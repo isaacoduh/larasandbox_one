@@ -2031,6 +2031,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2041,7 +2044,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.axios.get('http://localhost:8000/api/journals').then(function (response) {
-      _this.journals = response.journals;
+      _this.journals = response.data;
     });
   },
   methods: {
@@ -2098,7 +2101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      book: {}
+      journal: {}
     };
   },
   created: function created() {
@@ -37948,7 +37951,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "tbody",
-        _vm._l(_vm.Journals, function(journal) {
+        _vm._l(_vm.journals, function(journal) {
           return _c("tr", { key: journal.id }, [
             _c("td", [_vm._v(_vm._s(journal.id))]),
             _vm._v(" "),
@@ -38014,7 +38017,13 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Description")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Author")])
+        _c("th", [_vm._v("Author")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Created At")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Updated At")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Actions")])
       ])
     ])
   }
@@ -38094,6 +38103,7 @@ var render = function() {
                     expression: "journal.description"
                   }
                 ],
+                staticClass: "form-control",
                 attrs: { id: "", cols: "30", rows: "10" },
                 domProps: { value: _vm.journal.description },
                 on: {
@@ -53501,7 +53511,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: _routes__WEBPACK_IMPORTED_MODULE_4__["routes"]
 });
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  router: router,
+  render: function render(h) {
+    return h(_App_vue__WEBPACK_IMPORTED_MODULE_0__["default"]);
+  }
 });
 
 /***/ }),

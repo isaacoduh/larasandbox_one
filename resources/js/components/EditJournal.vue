@@ -10,7 +10,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Description</label>
-                        <textarea id="" v-model="journal.description" cols="30" rows="10"></textarea>
+                        <textarea id="" v-model="journal.description" class="form-control" cols="30" rows="10"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="">Author</label>
@@ -26,10 +26,11 @@
 <script>
     export default {
         data(){
-            return {book: {}}
+            return {journal: {}}
         },
         created(){
-            this.axios.get(`http://localhost:8000/api/journal/edit/${this.$route.params.id}`)
+            this.axios
+            .get(`http://localhost:8000/api/journal/edit/${this.$route.params.id}`)
             .then((response) => {
                 this.journal = response.data;
             });
