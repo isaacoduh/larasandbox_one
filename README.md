@@ -1,6 +1,6 @@
-## CMS with Laravel and Vue
+## Easy Role and Permission
 
-A content management application for a website owned by a ficticious product company. The idea is to build out a platform for the client to be able to manage certain parts of their static website.
+Designing a simple role and permission boiler plate.
 
 ## Key Learnings and Tools
-- PHP, Laravel, ES6 (Javascript), Vue
+- PHP, Laravel
