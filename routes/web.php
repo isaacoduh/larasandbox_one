@@ -20,3 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::prefix('select')->name('select.')->group(function () {
+    Route::post('states', 'ShopController@states')->name('states');
+    Route::post('areas', 'ShopController@areas')->name('areas');
+    Route::post('shps', 'ShopController@boards')->name('shops');
+});
+
+
+Route::get('/states', 'HomeController@states')->name('states');
+Route::get('/areas', 'HomeController@areas')->name('areas');
