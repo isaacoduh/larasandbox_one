@@ -19,6 +19,7 @@ class CreateShopsTable extends Migration
             $table->text('address');
             $table->foreignId('state_id');
             $table->foreignId('area_id');
+            $table->foreignId('user_id');
             $table->timestamps();
         });
     }
