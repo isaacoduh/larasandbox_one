@@ -1,12 +1,12 @@
 <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+    <div class="panel-heading" role="tab" id="{{ ($title ?? '') ? \Str::slug($title ?? '') :  'permissionHeading' }}">
         <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" aria-expanded="{{ $closed or 'true' }}" aria-controls="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
-                {{ $title or 'Override Permissions' }} {!! isset($user) ? '<span class="text-danger">(' . $user->getDirectPermissions()->count() . ')</span>' : '' !!}
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#dd-{{ ($title ?? '') ? str_slug($title ?? '') :  'permissionHeading' }}" aria-expanded="{{ $closed or 'true' }}" aria-controls="dd-{{ ($title ?? '') ? str_slug($title ?? '') :  'permissionHeading' }}">
+                {{ $title ?? '' or 'Override Permissions' }} {!! ($user) ? '<span class="text-danger">(' . $user->getDirectPermissions()->count() . ')</span>' : '' !!}
             </a>
         </h4>
     </div>
-    <div id="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}" class="panel-collapse collapse {{ $closed or 'in' }}" role="tabpanel" aria-labelledby="dd-{{ isset($title) ? str_slug($title) :  'permissionHeading' }}">
+    <div id="dd-{{ ($title ?? '') ? str_slug($title ?? '') :  'permissionHeading' }}" class="panel-collapse collapse {{ $closed or 'in' }}" role="tabpanel" aria-labelledby="dd-{{ ($title ?? '') ? str_slug($title ?? '') :  'permissionHeading' }}">
         <div class="panel-body">
             <div class="row">
                 @foreach($permissions as $perm)
@@ -17,7 +17,7 @@
                             $per_found = $role->hasPermissionTo($perm->name);
                         }
 
-                        if( isset($user)) {
+                        if(($user)) {
                             $per_found = $user->hasDirectPermission($perm->name);
                         }
                     ?>
