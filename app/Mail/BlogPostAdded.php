@@ -28,6 +28,6 @@ class BlogPostAdded extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.post.blog-post-added');
+        return $this->markdown('emails.posts.blog-post-added');
     }
 }
