@@ -11,6 +11,9 @@ use App\Http\ViewComposers\ActivityComposer;
 use App\Observers\BlogPostObserver;
 use App\Observers\CommentObserver;
 use App\Services\Counter;
+// use App\Services\DummyCounter;
+// use App\Http\Resources\Comment as CommentResource;
+// use Illuminate\Http\Resources\Json\Resource;
 
 class AppServiceProvider extends ServiceProvider
 {
