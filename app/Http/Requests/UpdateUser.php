@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use App\User;
 
-class StorePost extends FormRequest
+class UpdateUser extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +26,8 @@ class StorePost extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'bail|min:5|required|max:100',
-            'content' => 'required|min:10',
-            'thumbnail' => 'image|mimes:jpg, jpeg, png, gif, svg|max:1024|dimensions:min_height=500'
+            'avatar'=> 'image|mimes:jpg,jpeg,png,gif,svg|max:1024|dimensions:width=128,height=128',
+            'locale' => ['required', Rule::in(array_keys(User::LOCALES))]
         ];
     }
 }
