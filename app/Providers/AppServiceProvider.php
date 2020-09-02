@@ -17,15 +17,7 @@ use App\Services\Counter;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
+
 
     /**
      * Bootstrap any application services.
@@ -52,7 +44,7 @@ class AppServiceProvider extends ServiceProvider
             return new Counter(
                 $app->make('Illuminate\Contracts\Cache\Factory'),
                 $app->make('Illuminate\Contracts\Session\Session'),
-                env('COUNTER_TIMEOUT')
+                60
             );
         });
 
@@ -62,5 +54,15 @@ class AppServiceProvider extends ServiceProvider
         );
 
         // Resource::withoutWrapping();
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        //
     }
 }

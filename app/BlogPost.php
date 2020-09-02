@@ -42,7 +42,7 @@ class BlogPost extends Model
 
     public function scopeLatestWithRelations(Builder $query)
     {
-        return $query->latest()->withCount('comments')->with('users')->with('tags');
+        return $query->latest()->withCount('comments')->with('user')->with('tags');
     }
 
     public static function boot()
