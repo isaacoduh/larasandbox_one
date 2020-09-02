@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('components.comment-form', 'commentForm');
         Blade::component('components.comment-list', 'commentList');
 
-        // view()->composer(['posts.index', 'posts.show', ActivityComposer::class]);
+        view()->composer(['posts.index', 'posts.show'], ActivityComposer::class);
 
         BlogPost::observe(BlogPostObserver::class);
         Comment::observe(CommentObserver::class);
