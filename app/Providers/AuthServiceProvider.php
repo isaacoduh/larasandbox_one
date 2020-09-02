@@ -14,6 +14,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
+        'App\BlogPost' => 'App\Policies\BlogPostPolicy',
+        'App\User' => 'App\Policies\UserPolicy',
+        'App\Comment' => 'App\Policies\CommentPolicy'
     ];
 
     /**
@@ -25,6 +28,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::define('home.secret', function($user){
+            return $user->is_admin;
+        });
+
+        Gate::before(function($user, $ability){
+            if($user->is_admin && in_array($ability, ['update', 'delete'])){
+                return true;
+            }
+        });
     }
 }
