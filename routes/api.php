@@ -23,3 +23,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::get('orderables/{id}', 'Api\OrderableController@show');
 
 Route::apiResource('orderables', 'Api\OrderableController')->only(['index', 'show']);
+Route::get('orderables/{orderable}/availability', 'Api\OrderableAvailabilityController')->name('orderables.availability.show');
