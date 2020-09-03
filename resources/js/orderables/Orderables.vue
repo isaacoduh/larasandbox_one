@@ -1,53 +1,85 @@
 <template>
     <div>
-        <orderable-list-item :item-title="bookable1.title" :item-content="bookable1.content" :price="1000"></orderable-list-item>
-        <orderable-list-item :item-title="bookable2.title" :item-content="bookable2.content" :price="1700"></orderable-list-item>
-        <orderable-list-item :item-title="bookable3.title" :item-content="bookable3.content" :price="1500"></orderable-list-item>
+        <div v-if="loading">Data is loading.....</div>
+        <div v-else>
+            <div class="row mb-4" v-for="row in rows" :key="'row' + row">
+                <div class="col" v-for="(bookable, column) in bookablesInRow(row)" :key="'row' + row + column">
+                    <orderable-list-item
+                        :item-title="bookable.title"
+                        :item-content="bookable.content"
+                        :price="1000"
+                    ></orderable-list-item>
+                </div>
+                <div class="col" v-for="p in placeholdersInRow(row)" :key="'placeholder' + row + p"></div>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
-    import OrderableListItem from './OrderableListItem';
-    export default {
-        components: {
-            OrderableListItem
+import OrderableListItem from "./OrderableListItem";
+export default {
+    components: {
+        OrderableListItem
+    },
+    data() {
+        return {
+            bookables: null,
+            loading: false,
+            columns: 3
+        };
+    },
+    computed: {
+        rows() {
+            return this.bookables === null
+                ? 0
+                : Math.ceil(this.bookables.length / this.columns);
+        }
+    },
+    methods: {
+        bookablesInRow(row){
+            return this.bookables.slice((row - 1) * this.columns, row * this.columns);
         },
-        data(){
-            return {
-                bookable1: null,
-                bookable2: null,
-
-            };
-        },
-        created(){
-            console.log('Created');
-            console.log(this.bookable1);
-            console.log(this.bookable2);
-
-            setTimeout(() => {
-                this.bookable1 = {
-                    title: "Cheap Villa !!!",
-                    content: "A very cheap villa"
-                };
-                this.bookable2 = {
+        placeholdersInRow(row){
+            return this.columns - this.bookablesInRow(row).length;
+        }
+    },
+    created() {
+        this.loading = true;
+        setTimeout(() => {
+            this.bookables = [
+                {
+                    id: 1,
+                    title: "Cheap Space !!!",
+                    content: "A very cheap space"
+                },
+                {
                     title: "Cheap Villa 2",
                     content: "A very cheap villa 2"
-                };
-                this.bookable3 = {
-                    title: "Expensive villa",
-                    content: "A very cheap villa 3"
-                };
-            },5000);
-
-            setTimeout(() => {
-                console.log('First Change');
-                this.bookable1.title = 'You will see this!';
-            },8000);
-
-            setTimeout(() => {
-                console.log('Second Change');
-                this.bookable3.title = 'You wont see this!';
-            },12000)
-        }
-    };
+                },
+                {
+                    title: "Cheap Villa 2",
+                    content: "A very cheap villa 2"
+                },
+                {
+                    title: "Cheap Villa 2",
+                    content: "A very cheap villa 2"
+                },
+                {
+                    title: "Cheap Villa 2",
+                    content: "A very cheap villa 2"
+                },
+                {
+                    title: "Cheap Villa 2",
+                    content: "A very cheap villa 2"
+                },
+                {
+                    title: "A Cheap Space",
+                    content: "A very cheap space"
+                }
+            ];
+            this.loading = false;
+        }, 2000);
+    }
+};
 </script>
