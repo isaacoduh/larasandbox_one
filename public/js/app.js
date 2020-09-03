@@ -1953,7 +1953,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     itemTitle: String,
-    itemContent: String,
+    itemDescription: String,
     price: Number
   }
 });
@@ -1995,19 +1995,19 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      bookables: null,
+      orderables: null,
       loading: false,
       columns: 3
     };
   },
   computed: {
     rows: function rows() {
-      return this.bookables === null ? 0 : Math.ceil(this.bookables.length / this.columns);
+      return this.orderables === null ? 0 : Math.ceil(this.orderables.length / this.columns);
     }
   },
   methods: {
     bookablesInRow: function bookablesInRow(row) {
-      return this.bookables.slice((row - 1) * this.columns, row * this.columns);
+      return this.orderables.slice((row - 1) * this.columns, row * this.columns);
     },
     placeholdersInRow: function placeholdersInRow(row) {
       return this.columns - this.bookablesInRow(row).length;
@@ -2031,32 +2031,10 @@ __webpack_require__.r(__webpack_exports__);
       return console.log("Error ".concat(result));
     });
     console.log(p);
-    setTimeout(function () {
-      _this.bookables = [{
-        id: 1,
-        title: "Cheap Space !!!",
-        content: "A very cheap space"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "Cheap Villa 2",
-        content: "A very cheap villa 2"
-      }, {
-        title: "A Cheap Space",
-        content: "A very cheap space"
-      }];
+    var request = axios.get('/api/orderables').then(function (response) {
+      _this.orderables = response.data;
       _this.loading = false;
-    }, 2000);
+    });
   }
 });
 
@@ -37766,13 +37744,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "card" }, [
+    _c("div", { staticClass: "card w-100" }, [
       _c("div", { staticClass: "card-body" }, [
         _c("h5", { staticClass: "card-title" }, [
           _vm._v(_vm._s(_vm.itemTitle))
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "card-text" }, [_vm._v(_vm._s(_vm.itemContent))])
+        _c("p", { staticClass: "card-text" }, [
+          _vm._v(_vm._s(_vm.itemDescription))
+        ])
       ])
     ])
   ])
@@ -37809,15 +37789,18 @@ var render = function() {
               "div",
               { key: "row" + row, staticClass: "row mb-4" },
               [
-                _vm._l(_vm.bookablesInRow(row), function(bookable, column) {
+                _vm._l(_vm.bookablesInRow(row), function(orderable, column) {
                   return _c(
                     "div",
-                    { key: "row" + row + column, staticClass: "col" },
+                    {
+                      key: "row" + row + column,
+                      staticClass: "col d-flex align-items-stretch"
+                    },
                     [
                       _c("orderable-list-item", {
                         attrs: {
-                          "item-title": bookable.title,
-                          "item-content": bookable.content,
+                          "item-title": orderable.title,
+                          "item-description": orderable.description,
                           price: 1000
                         }
                       })
