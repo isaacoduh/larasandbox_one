@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-import Orderable from './orderables/Orderable';
+import Orderable from './orderable/Orderable';
 import Orderables from './orderables/Orderables';
 
 const routes = [
