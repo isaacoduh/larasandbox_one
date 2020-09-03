@@ -1,5 +1,6 @@
 <?php
 
+use App\Orderable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+
+Route::get('orderables', function(Request $request){
+    return Orderable::all();
+});
+
+Route::get('orderables/{id}', function(Request $request, $id){
+    return Orderable::findOrfail($id);
 });
