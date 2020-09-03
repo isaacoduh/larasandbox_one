@@ -1,5 +1,5 @@
 import VueRouter from 'vue-router';
-import Example2 from './components/Example2';
+import Orderable from './orderables/Orderable';
 import Orderables from './orderables/Orderables';
 
 const routes = [
@@ -9,9 +9,9 @@ const routes = [
         name: "home",
     },
     {
-        path: "/second",
-        component: Example2,
-        name: "second"
+        path: "/orderable/:id",
+        component: Orderable,
+        name: "orderable"
     }
 ];
 
