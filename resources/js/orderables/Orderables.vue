@@ -44,17 +44,9 @@ export default {
     },
     created() {
         this.loading = true;
-        const p = new Promise((resolve, reject) => {
-            console.log(resolve);
-            console.log(reject);
-            setTimeout(() => resolve('Hello'),3000);
-        }).then(result => "Hello Again " + result)
-        .then(result => console.log(result))
-        .catch(result => console.log(`Error ${result}`));
-        console.log(p);
 
         const request = axios.get('/api/orderables').then(response => {
-            this.orderables = response.data;
+            this.orderables = response.data.data;
             this.loading = false;
         });
     }

@@ -28,7 +28,7 @@ export default {
         this.loading = true;
         axios.get(`/api/orderables/${this.$route.params.id}`)
         .then(response => {
-            this.orderable = response.data;
+            this.orderable = response.data.data;
             this.loading = false;
         });
     }

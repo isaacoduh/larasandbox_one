@@ -1938,7 +1938,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loading = true;
     axios.get("/api/orderables/".concat(this.$route.params.id)).then(function (response) {
-      _this.orderable = response.data;
+      _this.orderable = response.data.data;
       _this.loading = false;
     });
   }
@@ -2033,22 +2033,8 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     this.loading = true;
-    var p = new Promise(function (resolve, reject) {
-      console.log(resolve);
-      console.log(reject);
-      setTimeout(function () {
-        return resolve('Hello');
-      }, 3000);
-    }).then(function (result) {
-      return "Hello Again " + result;
-    }).then(function (result) {
-      return console.log(result);
-    })["catch"](function (result) {
-      return console.log("Error ".concat(result));
-    });
-    console.log(p);
     var request = axios.get('/api/orderables').then(function (response) {
-      _this.orderables = response.data;
+      _this.orderables = response.data.data;
       _this.loading = false;
     });
   }
