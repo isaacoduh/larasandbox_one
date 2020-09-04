@@ -28,3 +28,5 @@ Route::get('orderables/{orderable}/reviews', 'Api\OrderableReviewController')->n
 Route::get('orderables/{orderable}/price', 'Api\OrderablePriceController')->name('orderables.price.show');
 Route::get('/order-by-review/{reviewKey}', 'Api\OrderByReviewController')->name('order.by-review.show');
 Route::apiResource('reviews', 'Api\ReviewController')->only(['show','store']);
+
+Route::post('checkout', 'Api\CheckoutController')->name('checkout');

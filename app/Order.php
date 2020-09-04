@@ -30,6 +30,12 @@ class Order extends Model
         return static::where('review_key', $reviewKey)->with('orderable')->get()->first();
     }
 
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
+
     protected static function boot()
     {
         parent::boot();

@@ -22,7 +22,8 @@ class OrdersTableSeeder extends Seeder
 
                 $order = Order::make([
                     'from' => $from,
-                    'to' => $to
+                    'to' => $to,
+                    'price' => random_int(200, 5000)
                 ]);
                 $orders->push($order);
             }
