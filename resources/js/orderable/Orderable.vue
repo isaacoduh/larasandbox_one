@@ -13,7 +13,7 @@
             </div>
             <review-list :orderable-id="this.$route.params.id"></review-list>
         </div>
-        <div class="col-md-4"><availability :orderable-id="this.$route.params.id"></availability></div>
+        <div class="col-md-4 pb-4"><availability :orderable-id="this.$route.params.id" @availability="checkPrice($event)"></availability></div>
     </div>
 </template>
 

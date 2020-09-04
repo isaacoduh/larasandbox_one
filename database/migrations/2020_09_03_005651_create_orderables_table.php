@@ -18,6 +18,7 @@ class CreateOrderablesTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->text('description');
+            $table->unsignedInteger('price');
         });
     }
 
