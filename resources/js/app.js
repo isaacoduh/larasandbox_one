@@ -9,6 +9,7 @@ import FatalError from './shared/components/FatalError';
 import StarRating from './shared/components/StarRating';
 import Success from './shared/components/Success';
 import ValidationErrors from './shared/components/ValidationErrors';
+import storeDefinition from "./store";
 
 window.Vue = require('vue');
 
@@ -26,9 +27,12 @@ Vue.component("v-errors", ValidationErrors);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+const store = new Vuex.Store(storeDefinition);
+
 const app = new Vue({
     el: '#app',
     router,
+    store,
     components: {
         index: Index
     }
