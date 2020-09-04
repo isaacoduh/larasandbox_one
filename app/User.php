@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -15,6 +16,16 @@ class User extends Authenticatable
      *
      * @var array
      */
+
+    public $incrementing = false;
+
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function($model){
+            $model->{$model->getKeyName()} = (string) Str::uuid();
+        });
+    }
     protected $fillable = [
         'name', 'email', 'password',
     ];
