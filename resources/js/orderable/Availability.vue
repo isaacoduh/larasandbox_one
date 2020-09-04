@@ -58,6 +58,9 @@
 
 <script>
 export default {
+    props:{
+        orderableId: String
+    },
     data() {
         return {
             from: null,
@@ -73,7 +76,7 @@ export default {
             this.errors = null;
             axios
                 .get(
-                    `/api/orderables/${this.$route.params.id}/availability?from=${this.from}&to=${this.to}`
+                    `/api/orderables/${this.orderableId}/availability?from=${this.from}&to=${this.to}`
                 )
                 .then(response => {
                     this.status = response.status;

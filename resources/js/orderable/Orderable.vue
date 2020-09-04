@@ -11,9 +11,9 @@
                     <div v-else>Loading....</div>
                 </div>
             </div>
-            <review-list></review-list>
+            <review-list :orderable-id="this.$route.params.id"></review-list>
         </div>
-        <div class="col-md-4"><availability></availability></div>
+        <div class="col-md-4"><availability :orderable-id="this.$route.params.id"></availability></div>
     </div>
 </template>
 

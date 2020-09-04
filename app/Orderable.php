@@ -15,4 +15,10 @@ class Orderable extends Model
     {
         return 0 === $this->orders()->betweenDates($from, $to)->count();
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
 }
