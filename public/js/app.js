@@ -1988,6 +1988,10 @@ __webpack_require__.r(__webpack_exports__);
 
       this.loading = true;
       this.errors = null;
+      this.$store.commit('setLastSearch', {
+        from: this.from,
+        to: this.to
+      });
       axios.get("/api/orderables/".concat(this.orderableId, "/availability?from=").concat(this.from, "&to=").concat(this.to)).then(function (response) {
         _this.status = response.status;
       })["catch"](function (error) {

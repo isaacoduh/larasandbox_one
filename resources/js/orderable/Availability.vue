@@ -57,13 +57,17 @@ export default {
             from: null,
             to: null,
             loading: false,
-            status:null
+            status:null,
         };
     },
     methods: {
         check() {
             this.loading = true;
             this.errors = null;
+            this.$store.commit('setLastSearch',{
+                from: this.from,
+                to: this.to
+            });
             axios
                 .get(
                     `/api/orderables/${this.orderableId}/availability?from=${this.from}&to=${this.to}`
