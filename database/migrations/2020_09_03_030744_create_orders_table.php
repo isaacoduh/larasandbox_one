@@ -22,6 +22,8 @@ class CreateOrdersTable extends Migration
 
             $table->unsignedBigInteger('orderable_id')->index();
             $table->foreign('orderable_id')->references('id')->on('orderables');
+
+            $table->uuid('review_key');
         });
     }
 

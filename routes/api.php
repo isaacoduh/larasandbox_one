@@ -25,3 +25,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('orderables', 'Api\OrderableController')->only(['index', 'show']);
 Route::get('orderables/{orderable}/availability', 'Api\OrderableAvailabilityController')->name('orderables.availability.show');
 Route::get('orderables/{orderable}/reviews', 'Api\OrderableReviewController')->name('orderables.reviews.index');
+Route::get('/order-by-review/{reviewKey}', 'Api\OrderByReviewController')->name('order.by-review.show');
+Route::apiResource('reviews', 'Api\ReviewController')->only(['show','store']);
