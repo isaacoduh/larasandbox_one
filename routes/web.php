@@ -17,12 +17,12 @@ Route::view('/', 'welcome');
 
 Auth::routes();
 
-Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
-Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');
+Route::get('/login/admin', 'Auth\LoginController@showAdminLogin');
+Route::get('/register/admin', 'Auth\RegisterController@showAdminRegistrationForm');
 
 Route::post('/login/admin', 'Auth\LoginController@adminLogin');
 Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 
 Route::view('/admin', 'admin');
 
-Route::get('/home', 'home')->middleware('auth')->name('home');
+Route::view('/home', 'home')->middleware('auth')->name('home');
