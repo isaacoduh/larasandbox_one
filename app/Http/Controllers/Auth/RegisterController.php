@@ -89,7 +89,7 @@ class RegisterController extends Controller
     protected function createAdmin(Request $request)
     {
         $this->validator($request->all())->validate();
-        $admin = Admin::create([
+        Admin::create([
             'name' => $request['name'],
             'email' => $request['email'],
             'password' => Hash::make($request['password']),
