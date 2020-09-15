@@ -1,6 +1,7 @@
-## CMS with Laravel and Vue
+## Vacation App Management Console
 
-A content management application for a website owned by a ficticious product company. The idea is to build out a platform for the client to be able to manage certain parts of their static website.
+Demostration of an admin console for managing vaction apps, including country, city, etc.... cloning (Booking Board)
 
 ## Key Learnings and Tools
 - PHP, Laravel, ES6 (Javascript), Vue
+- Datatable, jQuery
