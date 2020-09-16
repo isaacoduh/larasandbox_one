@@ -20,9 +20,9 @@ class CreateBookingsTable extends Migration
             $table->integer('adults');
             $table->integer('children')->nullable();
             $table->unsignedInteger('city_from_id');
-            $table->foreign('city_from_id', 'city_from_fk_1587040')->references('id')->on('cities');
+            $table->foreign('city_from_id')->references('id')->on('cities');
             $table->unsignedInteger('city_to_id');
-            $table->foreign('city_to_id', 'city_to_fk_1587042')->references('id')->on('cities');
+            $table->foreign('city_to_id')->references('id')->on('cities');
             $table->timestamps();
             $table->softDeletes();
         });
