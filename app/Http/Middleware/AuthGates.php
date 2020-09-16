@@ -30,7 +30,7 @@ class AuthGates
             }
 
             foreach($permissionsArray as $title => $roles){
-                Gate::define('title', function(\App\User $user) use ($roles){
+                Gate::define($title, function(\App\User $user) use ($roles){
                     return count(array_intersect($user->roles->pluck('id')->toArray(), $roles)) > 0;
                 });
             }
