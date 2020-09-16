@@ -31,5 +31,5 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('cities', 'CitiesApiController');
 
     // Trips
-    Route::apiResource('trips', 'TripsApiController');
+    Route::apiResource('bookings', 'BookingsApiController');
 });
